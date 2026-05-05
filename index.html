@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Car Price Recommendation</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head><body>
+    <h2>Car Price Recommendation System</h2>
+    <form method="POST">
+        <label>Year:</label>
+        <input type="number" name="year" required>
+        
+        <label>KM Driven:</label>
+        <input type="number" name="km_driven" required>
+        
+        <label>Fuel Type:</label>
+        <select name="fuel_type">
+            <option value="Petrol">Petrol</option>
+            <option value="Diesel">Diesel</option>
+            <option value="CNG">CNG</option>
+            <option value="Electric">Electric</option>
+        </select>
+
+        <label>Transmission:</label>
+        <select name="transmission">
+            <option value="Manual">Manual</option>
+            <option value="Automatic">Automatic</option>
+        </select>
+
+        <label>Brand:</label>
+        <input type="text" name="brand" required>
+
+        <button type="submit">Predict Price</button>
+    </form>
+
+    {% if prediction %}
+        <div class="result">
+            Estimated Selling Price: ₹{{ prediction }}
+        </div>
+    {% endif %}
+</body>
+</html>
